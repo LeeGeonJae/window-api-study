@@ -1,2 +1,7 @@
 ﻿  CCore.cpp
-  WindowsProject2.vcxproj -> C:\Users\user\Documents\GitHub\window-api-study\x64\Debug\WindowsProject2.exe
+  CKeyMgr.cpp
+  CObject.cpp
+  CTimeMgr.cpp
+  WindowsProject2.cpp
+D:\VisualStudio\Algorithm\Algorithm\window-api-study\WindowsProject2\WindowsProject2.cpp(84,68): warning C4390: ';': 제어된 빈 문이 있습니다. 이 문이 필요합니까?
+  WindowsProject2.vcxproj -> D:\VisualStudio\Algorithm\Algorithm\window-api-study\x64\Debug\WindowsProject2.exe
