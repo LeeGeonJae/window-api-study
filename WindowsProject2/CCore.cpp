@@ -3,18 +3,21 @@
 #include "CObject.h"
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
+#include "CScene.h"
+#include "CSceneMgr.h"
 
 CObject g_obj;
 
 CCore::CCore()
-	: m_hWnd(NULL),
+	: m_hWnd(0),
 	m_ptResolution{},
-	m_hDC(NULL),
+	m_hDC(0),
 	m_hBit(0),
 	m_memDC(0)
 {
 
 }
+
 CCore::~CCore()
 {
 	ReleaseDC(m_hWnd, m_hDC);
@@ -47,9 +50,7 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution)
 	// Manager 초기화
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
-
-	g_obj.SetPos(Vec2((float)(m_ptResolution.x / 2), (float)(m_ptResolution.y / 2 )));
-	g_obj.SetScale(Vec2(100, 100));
+	CSceneMgr::GetInst()->Init();
 
 	return S_OK;
 }
@@ -57,68 +58,20 @@ int CCore::Init(HWND _hWnd, POINT _ptResolution)
 
 void CCore::progress()
 {
-	//static int CallCount = 0;
-	//++CallCount;
-
-	//static int iPrevCount = GetTickCount();
-
-	//int iCurCount = GetTickCount();
-	//if (iCurCount - iPrevCount > 1000)
-	//{
-	//	iPrevCount = iCurCount;
-	//	CallCount = 0;
-	//}
-
 	// Manager Update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	CSceneMgr::GetInst()->update();
 
-	update();
 
-	render();
+	//update();
 
-}
-
-void CCore::update()
-{
-	Vec2 vPos = g_obj.GetPos();
-
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD)
-	{
-		vPos.x -= 200.f * fDT;
-	}
-
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD)
-	{
-		vPos.x += 200.f * fDT;
-	}
-
-	if(GetAsyncKeyState(VK_UP) & 0x8000)
-	{
-		vPos.y -= 200.f * fDT;
-	}
-
-	if(GetAsyncKeyState(VK_DOWN) & 0x8000)
-	{
-		vPos.y += 200.f * fDT;
-	}
-
-	g_obj.SetPos(vPos);
-}
-
-void CCore::render()
-{
-	// 화면 Clear
+	//render();
+	
 	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
-	// 그리기
-	Vec2 vPos = g_obj.GetPos();
-	Vec2 vScale = g_obj.GetScale();
-	Rectangle(m_memDC
-		, int(vPos.x - vScale.x / 2)
-		, int(vPos.y - vScale.y / 2)
-		, int(vPos.x + vScale.x / 2)
-		, int(vPos.y + vScale.y / 2));
+	CSceneMgr::GetInst()->render(m_memDC);
 
-	BitBlt(m_hDC, 0,0,m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
+
 }
