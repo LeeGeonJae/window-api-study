@@ -1,3 +1,4 @@
 ﻿  CCore.cpp
-  CKeyMgr.cpp
+  CSceneMgr.cpp
+  CScene_Start.cpp
   WindowsProject2.vcxproj -> C:\Users\user\Documents\GitHub\window-api-study\x64\Debug\WindowsProject2.exe

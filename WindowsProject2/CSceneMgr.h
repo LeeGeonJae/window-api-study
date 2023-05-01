@@ -13,9 +13,4 @@ public:
 	void Init();
 	void update();
 	void render(HDC _dc);
-
-private:
-	CSceneMgr();
-	~CSceneMgr();
 };
-

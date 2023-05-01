@@ -16,8 +16,8 @@ void CScene_Start::Enter()
 	// Object Ãß°¡
 	CObject* pObj = new CObject;
 
-	pObj->GetPos();
-	pObj->GetScale();
+	pObj->SetPos(Vec2(640.f, 384.f));
+	pObj->SetScale(Vec2(100.f, 100.f));
 
 	AddObject(pObj, GROUP_TYPE::DEFAULT);
 }

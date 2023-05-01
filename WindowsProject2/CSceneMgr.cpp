@@ -7,7 +7,6 @@
 CSceneMgr::CSceneMgr()
 	: m_pCurScene(nullptr)
 	, m_arrScene{}
-	
 {
 
 }

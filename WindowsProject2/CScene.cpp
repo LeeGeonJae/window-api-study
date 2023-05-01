@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CScene.h"
 
+#include "CObject.h"
 
 CScene::CScene()
 {
@@ -14,6 +15,28 @@ CScene::~CScene()
 		{
 			// m_arrObj[i] 그룹 백터의 j물체 삭제
 			delete m_arrObj[i][j];
+		}
+	}
+}
+
+void CScene::update()
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; i++)
+	{
+		for (int j = 0; j < m_arrObj[i].size(); j++)
+		{
+			m_arrObj[i][j]->update();
+		}
+	}
+}
+
+void CScene::render(HDC _dc)
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; i++)
+	{
+		for (int j = 0; j < m_arrObj[i].size(); j++)
+		{
+			m_arrObj[i][j]->render(_dc);
 		}
 	}
 }
