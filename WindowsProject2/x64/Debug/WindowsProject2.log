@@ -1,9 +1,3 @@
-﻿  CCore.cpp
-  CKeyMgr.cpp
-  CObject.cpp
-  CScene.cpp
-  CSceneMgr.cpp
-  CScene_Start.cpp
-  CTimeMgr.cpp
+﻿  CObject.cpp
   WindowsProject2.cpp
-  WindowsProject2.vcxproj -> D:\VisualStudio\Algorithm\Algorithm\window-api-study\x64\Debug\WindowsProject2.exe
+  WindowsProject2.vcxproj -> C:\Users\user\Documents\GitHub\window-api-study\x64\Debug\WindowsProject2.exe

@@ -15,6 +15,7 @@ private:
 
 public:
 	HWND GetMainHWnd() { return m_hWnd; }
+	POINT GetResolution() { return m_ptResolution; }
 
 private:
 	HWND	m_hWnd;					// 메인 윈도우 핸들

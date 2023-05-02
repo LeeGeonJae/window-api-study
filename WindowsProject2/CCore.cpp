@@ -6,8 +6,6 @@
 #include "CScene.h"
 #include "CSceneMgr.h"
 
-CObject g_obj;
-
 CCore::CCore()
 	: m_hWnd(0),
 	m_ptResolution{},

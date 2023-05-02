@@ -60,9 +60,6 @@ void CKeyMgr::init()
 	{
 		m_vecKey.push_back(tKeyInfo{ KEY_STATE::NONE, false });
 	}
-
-	m_vecKey[(int)KEY::LEFT].eState;
-	m_vecKey[(int)KEY::LEFT].bPrevPush;
 }
 
 void CKeyMgr::update()
@@ -71,7 +68,7 @@ void CKeyMgr::update()
 	//HWND hMainWnd = CCore::GetInst()->GetMainHWnd();
 
 	// 현재 포커싱 되어 있는 윈도우의 핸들값을 알려준다
-	// 현재 우리가 가지고 있는 원도우들의 핸들을 가지고 있지 않으면 NULL이 반환된다
+	// 현재 우리가 가지고 있는 원도우들의 핸들을 가지고 있지 않으면 nullptr이 반환된다
 	HWND hWnd = GetFocus();
 
 	// 윈도우 포커싱 중일 때 키 이벤트 동적
