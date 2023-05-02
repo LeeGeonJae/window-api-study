@@ -60,13 +60,13 @@ struct tKeyInfo
 class CKeyMgr
 {
 	SINGLE(CKeyMgr);
-private:
-	vector<tKeyInfo> m_vecKey;
-
 public:
 	void init();
 	void update();
 
 public:
 	KEY_STATE GetKeyState(KEY _eKey) { return m_vecKey[(int)_eKey].eState; }
+
+private:
+	vector<tKeyInfo> m_vecKey;
 };

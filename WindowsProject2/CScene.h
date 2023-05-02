@@ -5,9 +5,9 @@ class CObject;
 
 class CScene
 {
-private:
-	vector<CObject*>	m_arrObj[(UINT)GROUP_TYPE::END];	// 오브젝트를 저장 및 관리할 벡터를 그룹 갯수만큼 선언
-	wstring				m_strName;							// Scene 이름
+public:
+	CScene();
+	virtual ~CScene();
 
 public:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
@@ -24,9 +24,7 @@ protected:
 	// 구현부를 헤더에 만들면 해당 함수는 인라인 처리되어 함수 호출 스택이 생기지 않아 성능에 차이가 많이 없다.
 	void AddObject(CObject* _pObj, GROUP_TYPE _eType) { m_arrObj[(UINT)_eType].push_back(_pObj); };
 
-public:
-	CScene();
-	virtual ~CScene();
-
+private:
+	vector<CObject*>	m_arrObj[(UINT)GROUP_TYPE::END];	// 오브젝트를 저장 및 관리할 벡터를 그룹 갯수만큼 선언
+	wstring				m_strName;							// Scene 이름
 };
-

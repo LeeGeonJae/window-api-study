@@ -75,3 +75,11 @@ void CCore::progress()
 		, m_memDC, 0, 0, SRCCOPY);
 
 }
+
+void CCore::update()
+{
+}
+
+void CCore::render()
+{
+}
