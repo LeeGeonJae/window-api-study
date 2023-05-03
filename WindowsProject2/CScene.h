@@ -20,7 +20,7 @@ public:
 	virtual void Enter() = 0;		// 해당 Scene에 진입 시 호출
 	virtual void Exit() = 0;		// 해당 Scene을 탈출 시 호출
 
-protected:
+public:
 	// 구현부를 헤더에 만들면 해당 함수는 인라인 처리되어 함수 호출 스택이 생기지 않아 성능에 차이가 많이 없다.
 	void AddObject(CObject* _pObj, GROUP_TYPE _eType) { m_arrObj[(UINT)_eType].push_back(_pObj); };
 
