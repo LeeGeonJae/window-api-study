@@ -1,0 +1,34 @@
+﻿  CCore.cpp
+  CKeyMgr.cpp
+  CMissile.cpp
+C:\Users\user\Documents\GitHub\window-api-study\WindowsProject2\CMissile.cpp(9,1): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+  CMonster.cpp
+  CObject.cpp
+  CPlayer.cpp
+  CRes.cpp
+  CScene.cpp
+  CSceneMgr.cpp
+  CScene_Start.cpp
+  CSound.cpp
+  CTexture.cpp
+  CTimeMgr.cpp
+  WindowsProject2.cpp
+LINK : warning C4727: 타임스탬프가 동일한 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\windowsproject2.pch PCH가 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\ckeymgr.obj 및 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\ccore.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\windowsproject2.pch PCH가 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cobject.obj 및 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cmonster.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\windowsproject2.pch PCH가 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cscene.obj 및 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cres.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\windowsproject2.pch PCH가 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cscene_start.obj 및 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\cscenemgr.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+LINK : warning C4727: 타임스탬프가 동일한 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\windowsproject2.pch PCH가 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\ctimemgr.obj 및 c:\users\user\documents\github\window-api-study\windowsproject2\x64\release\ctexture.obj에 있습니다.  첫 번째 PCH를 사용합니다.
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+c:\users\user\documents\github\window-api-study\windowsproject2\ckeymgr.cpp : fatal error C1001: 내부 컴파일러 오류가 발생했습니다.
+  (컴파일러 파일 'D:\a\_work\1\s\src\vctools\Compiler\Utc\src\p2\main.c', 줄 224)
+   이 문제를 해결하려면 위 목록에 나오는 위치 부근의 프로그램을 단순화하거나 변경하세요.
+  가능한 경우 https://developercommunity.visualstudio.com에서 재현해 주세요. 
+  자세한 내용을 보려면 Visual C++ [도움말] 메뉴에서 [기술 지원] 명령을 
+   선택하거나 기술 지원 도움말 파일을 참조하세요.
+    link!RaiseException()+0x6c
+    link!RaiseException()+0x6c
+    link!InvokeCompilerPassW()+0xa442f
+    link!InvokeCompilerPassW()+0x15d5c1
+  
+LINK : fatal error LNK1000: Internal error during IMAGE::BuildImage

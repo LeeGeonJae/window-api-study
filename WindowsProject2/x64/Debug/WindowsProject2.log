@@ -1,3 +1,3 @@
-﻿  CMissile.cpp
-D:\VisualStudio\Algorithm\Algorithm\window-api-study\WindowsProject2\CMissile.cpp(19,21): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  WindowsProject2.vcxproj -> D:\VisualStudio\Algorithm\Algorithm\window-api-study\x64\Debug\WindowsProject2.exe
+﻿  CTexture.cpp
+  LINK : C:\Users\user\Documents\GitHub\window-api-study\Output\bin_debug\WindowsProject2.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  WindowsProject2.vcxproj -> C:\Users\user\Documents\GitHub\window-api-study\Output\bin_debug\WindowsProject2.exe

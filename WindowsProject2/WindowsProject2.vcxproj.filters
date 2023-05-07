@@ -51,6 +51,15 @@
     <Filter Include="Engine\04. Object\Missile">
       <UniqueIdentifier>{c1cacfd2-9a9e-4846-9b37-601428c34905}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\06 Resource">
+      <UniqueIdentifier>{186e2b60-bab4-43d7-8508-62cbb32fb38f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06 Resource\Sound">
+      <UniqueIdentifier>{226c7711-d402-45d2-aac5-a325c2187122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06 Resource\Texture">
+      <UniqueIdentifier>{baf302f5-cb0a-4d8c-8fbf-e90f712b7e74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -102,6 +111,15 @@
     <ClInclude Include="CMissile.h">
       <Filter>Engine\04. Object\Missile</Filter>
     </ClInclude>
+    <ClInclude Include="CRes.h">
+      <Filter>Engine\06 Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>Engine\06 Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Engine\06 Resource\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject2.rc">
@@ -147,6 +165,15 @@
     </ClCompile>
     <ClCompile Include="CMissile.cpp">
       <Filter>Engine\04. Object\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CRes.cpp">
+      <Filter>Engine\06 Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Engine\06 Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>Engine\06 Resource\Texture</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
