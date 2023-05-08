@@ -27,9 +27,6 @@
     <Filter Include="Engine\04. Object">
       <UniqueIdentifier>{bb854981-8cdd-4002-930f-04dc8654219d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\CTimeMgr">
-      <UniqueIdentifier>{2bfa92ab-56d2-412d-bbcf-17c21619f621}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\05 Scene">
       <UniqueIdentifier>{b13cccca-3541-433e-9e92-1830acce1320}</UniqueIdentifier>
     </Filter>
@@ -63,6 +60,12 @@
     <Filter Include="Engine\03. Manager\PathMgr">
       <UniqueIdentifier>{e814a86c-e2fd-4f3d-b9fa-57d78e03aab1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\TimeMgr">
+      <UniqueIdentifier>{2bfa92ab-56d2-412d-bbcf-17c21619f621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\ResMgr">
+      <UniqueIdentifier>{68e4a34c-1bbf-4033-9eea-ddaaf7969cb1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -94,7 +97,7 @@
       <Filter>Engine\01.Header</Filter>
     </ClInclude>
     <ClInclude Include="CTimeMgr.h">
-      <Filter>Engine\03. Manager\CTimeMgr</Filter>
+      <Filter>Engine\03. Manager\TimeMgr</Filter>
     </ClInclude>
     <ClInclude Include="CScene.h">
       <Filter>Engine\05 Scene</Filter>
@@ -126,6 +129,9 @@
     <ClInclude Include="CPathMgr.h">
       <Filter>Engine\03. Manager\PathMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>Engine\03. Manager\ResMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject2.rc">
@@ -152,7 +158,7 @@
     </ClCompile>
     <ClCompile Include="WindowsProject2.cpp" />
     <ClCompile Include="CTimeMgr.cpp">
-      <Filter>Engine\03. Manager\CTimeMgr</Filter>
+      <Filter>Engine\03. Manager\TimeMgr</Filter>
     </ClCompile>
     <ClCompile Include="CScene.cpp">
       <Filter>Engine\05 Scene</Filter>
@@ -183,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="CPathMgr.cpp">
       <Filter>Engine\03. Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>Engine\03. Manager\ResMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

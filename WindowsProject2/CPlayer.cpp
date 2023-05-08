@@ -8,6 +8,21 @@
 
 #include "CMissile.h"
 
+#include "CPathMgr.h"
+#include "CTexture.h"
+#include "CResMgr.h"
+
+CPlayer::CPlayer()
+	: m_pTex(nullptr)
+{
+	// Texture 로딩하기
+	m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+}
+
+CPlayer::~CPlayer()
+{
+}
+
 void CPlayer::update()
 {
 	Vec2 vPos = GetPos();
@@ -40,8 +55,28 @@ void CPlayer::update()
 	SetPos(vPos);
 }
 
-void CPlayer::render()
+void CPlayer::render(HDC _dc)
 {
+	int iWidth = (int)m_pTex->Width();
+	int iHeight = (int)m_pTex->Height();
+	
+	Vec2 vPos = GetPos();
+
+	/*BitBlt(_dc
+		, (int)(vPos.x - (float)(iWidth / 2))
+		, (int)(vPos.y - (float)(iHeight / 2))
+		, iWidth, iHeight
+		, m_pTex->GetDC()
+		, 0, 0, SRCCOPY);*/
+
+	// BitBlt과 비슷하지만 특정 픽셀 색상을 무시한 기능을 추가한 BitBlt이다
+	TransparentBlt(_dc
+		, (int)(vPos.x - (float)(iWidth / 2))
+		, (int)(vPos.y - (float)(iHeight / 2))
+		, iWidth, iHeight
+		, m_pTex->GetDC()
+		, 0, 0, iWidth, iHeight
+		, RGB(255, 0, 255));
 }
 
 void CPlayer::CreateMissile()

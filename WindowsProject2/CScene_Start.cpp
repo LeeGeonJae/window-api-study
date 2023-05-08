@@ -4,6 +4,8 @@
 #include "CObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CTexture.h"
+#include "CPathMgr.h"
 
 #include "CCore.h"
 

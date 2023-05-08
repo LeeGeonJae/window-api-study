@@ -32,6 +32,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    // 메모리 릭(누수) 체크
+    // https://learn.microsoft.com/ko-kr/cpp/c-runtime-library/find-memory-leaks-using-the-crt-library?view=msvc-170
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(229);
+
     // 참조 되지 않는 변수 입니다
     // 이 코드는 아무 의미도 없다. UNPEFERENCED_PARAMERTER (변수) = 변수
     UNREFERENCED_PARAMETER(hPrevInstance);
