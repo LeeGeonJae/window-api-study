@@ -7,6 +7,7 @@ class CTimeMgr
 public:
 	void init();
 	void update();
+	void render();
 
 public:
 	double GetDT() { return m_dDT; }

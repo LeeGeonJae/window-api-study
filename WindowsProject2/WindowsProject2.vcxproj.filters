@@ -60,6 +60,9 @@
     <Filter Include="Engine\06 Resource\Texture">
       <UniqueIdentifier>{baf302f5-cb0a-4d8c-8fbf-e90f712b7e74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\PathMgr">
+      <UniqueIdentifier>{e814a86c-e2fd-4f3d-b9fa-57d78e03aab1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -120,6 +123,9 @@
     <ClInclude Include="CSound.h">
       <Filter>Engine\06 Resource\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Engine\03. Manager\PathMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject2.rc">
@@ -174,6 +180,9 @@
     </ClCompile>
     <ClCompile Include="CTexture.cpp">
       <Filter>Engine\06 Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Engine\03. Manager\PathMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
