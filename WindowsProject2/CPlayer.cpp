@@ -11,12 +11,16 @@
 #include "CPathMgr.h"
 #include "CTexture.h"
 #include "CResMgr.h"
+#include "CCollider.h"
 
 CPlayer::CPlayer()
 	: m_pTex(nullptr)
 {
 	// Texture 로딩하기
 	m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Player.bmp");
+
+	CreateCollider();
+	GetCollider()->SetScale(Vec2(100.f, 100.f));
 }
 
 CPlayer::~CPlayer()
@@ -62,13 +66,6 @@ void CPlayer::render(HDC _dc)
 	
 	Vec2 vPos = GetPos();
 
-	/*BitBlt(_dc
-		, (int)(vPos.x - (float)(iWidth / 2))
-		, (int)(vPos.y - (float)(iHeight / 2))
-		, iWidth, iHeight
-		, m_pTex->GetDC()
-		, 0, 0, SRCCOPY);*/
-
 	// BitBlt과 비슷하지만 특정 픽셀 색상을 무시한 기능을 추가한 BitBlt이다
 	TransparentBlt(_dc
 		, (int)(vPos.x - (float)(iWidth / 2))
@@ -77,6 +74,9 @@ void CPlayer::render(HDC _dc)
 		, m_pTex->GetDC()
 		, 0, 0, iWidth, iHeight
 		, RGB(255, 0, 255));
+
+	// 컴포넌트 (충돌체, etc...) 가 있는 경우 렌더
+	Component_render(_dc);
 }
 
 void CPlayer::CreateMissile()

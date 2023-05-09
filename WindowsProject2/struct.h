@@ -29,6 +29,27 @@ public:
 		y = (float)_pt.y;
 	}
 
+	Vec2 operator+(Vec2 _vc)
+	{
+		return Vec2(x + _vc.x, y + _vc.y);
+	}
+
+	Vec2 operator-(Vec2 _vc)
+	{
+		return Vec2(x - _vc.x, y - _vc.y);
+	}
+
+	Vec2 operator*(Vec2 _vc)
+	{
+		return Vec2(x * _vc.x, y * _vc.y);
+	}
+
+	Vec2 operator/(Vec2 _vc)
+	{
+		assert(!(0.f == _vc.x || 0.f == _vc.y));
+		return Vec2(x / _vc.x, y / _vc.y);
+	}
+
 public:
 	Vec2()
 		: x(0.f)

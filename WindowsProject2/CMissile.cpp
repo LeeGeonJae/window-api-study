@@ -8,6 +8,7 @@ CMissile::CMissile()
 	, m_vDir(1.f, 1.f)
 {
 	m_vDir.Normalize();
+	CreateCollider();
 }
 
 CMissile::~CMissile()
@@ -34,4 +35,6 @@ void CMissile::render(HDC _dc)
 
 	Ellipse(_dc, (int)(vPos.x - vScale.x / 2), (int)(vPos.y - vScale.y / 2)
 		, (int)(vPos.x + vScale.x / 2), (int)(vPos.y + vScale.y / 2));
+
+	Component_render(_dc);
 }

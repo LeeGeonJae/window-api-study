@@ -14,6 +14,7 @@ public:
 	const wstring& GetName() { return m_strName; }
 
 	void update();
+	void finalupdate();
 	void render(HDC _dc);
 
 	// 값이 기입된 가상 함수는 자식 클래스에서 구현해야될 함수인 것을 알리는 용도이다
