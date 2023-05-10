@@ -24,7 +24,7 @@ void CCollider::finalupdate()
 void CCollider::render(HDC _dc)
 {
 	// 지역 변수라서 함수가 끝날 떄 소멸자가 호출이 되어서 알아서 Default값으로 되돌아가게 설정
-	SelectGDI p(_dc, PEN_TYPE::BLUE);
+	SelectGDI p(_dc, PEN_TYPE::RED);
 	SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
 
 	Rectangle(_dc
