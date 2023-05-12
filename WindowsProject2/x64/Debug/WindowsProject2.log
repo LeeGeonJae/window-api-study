@@ -1,8 +1,6 @@
 ﻿  CCollider.cpp
   CCollisionMgr.cpp
-  CCore.cpp
   CMonster.cpp
   CObject.cpp
   CPlayer.cpp
-  CScene_Start.cpp
   WindowsProject2.vcxproj -> C:\Users\user\Documents\GitHub\window-api-study\Output\bin_debug\WindowsProject2.exe
