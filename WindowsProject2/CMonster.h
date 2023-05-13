@@ -15,6 +15,9 @@ public:
     void SetMoveDistance(float _f) { m_fMaxDistance = _f; }
 
 public:
+    virtual void OnCollisionEnter(CCollider* _pOther);
+
+public:
     virtual void update();
 
 private:

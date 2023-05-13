@@ -58,3 +58,13 @@ enum class PEN_TYPE
 	WHITE,
 	END,
 };
+
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT,		// 오브젝트 생성될 때,
+	DELETE_OBJECT,		// 오브젝트 삭제될 때
+	SCENE_CHANGE,		// 씬이 종료될 때
+
+
+	END
+};

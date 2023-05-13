@@ -19,6 +19,17 @@ CMonster::~CMonster()
 {
 }
 
+void CMonster::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Player")
+	{
+
+	}
+
+}
+
 void CMonster::update()
 {
 	Vec2 vCurPos = GetPos();
