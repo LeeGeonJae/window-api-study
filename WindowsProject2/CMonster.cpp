@@ -9,6 +9,7 @@ CMonster::CMonster()
 	, m_fSpeed(100.f)
 	, m_fMaxDistance(50.f)
 	, m_iDir(1)
+	, m_iHP(5)
 {
 	CreateCollider();
 	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
@@ -17,17 +18,6 @@ CMonster::CMonster()
 
 CMonster::~CMonster()
 {
-}
-
-void CMonster::OnCollisionEnter(CCollider* _pOther)
-{
-	CObject* pOtherObj = _pOther->GetObj();
-
-	if (pOtherObj->GetName() == L"Player")
-	{
-
-	}
-
 }
 
 void CMonster::update()
@@ -48,4 +38,17 @@ void CMonster::update()
 	}
 
 	SetPos(vCurPos);
+}
+
+void CMonster::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Missile_Player")
+	{
+		m_iHP--;
+
+		if (m_iHP <= 0)
+			DeleteObject(this);
+	}
 }

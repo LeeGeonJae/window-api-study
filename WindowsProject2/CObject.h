@@ -22,12 +22,17 @@ public:
 
 	CCollider* GetCollider() { return m_pCollider; }
 
+	bool IsDead() { return !m_bAlibe; }
+
 public:
 	void CreateCollider();
 
 	virtual void OnCollision(CCollider* _pOther) {}
 	virtual void OnCollisionEnter(CCollider* _pOther) {}
 	virtual void OnCollisionExit(CCollider* _pOther) {}
+
+private:
+	void SetDead() { m_bAlibe = false; }
 
 public:
 	CObject();
@@ -40,4 +45,8 @@ private:
 	CCollider* m_pCollider;
 
 	wstring m_strName;
+
+	bool m_bAlibe;
+
+	friend class CEventMgr;
 };

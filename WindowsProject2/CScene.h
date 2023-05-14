@@ -13,10 +13,12 @@ public:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
 	const wstring& GetName() { return m_strName; }
 
+public:
 	void update();
 	void finalupdate();
 	void render(HDC _dc);
 
+public:
 	// 값이 기입된 가상 함수는 자식 클래스에서 구현해야될 함수인 것을 알리는 용도이다
 	virtual void Enter() = 0;		// 해당 Scene에 진입 시 호출
 	virtual void Exit() = 0;		// 해당 Scene을 탈출 시 호출

@@ -3,8 +3,8 @@
 struct tEvent
 {
 	EVENT_TYPE	eEven;
-	DWORD		IParam;
-	DWORD		wParam;
+	DWORD_PTR	lParam;
+	DWORD_PTR	wParam;
 };
 
 class CEventMgr
@@ -12,6 +12,8 @@ class CEventMgr
 	SINGLE(CEventMgr)
 private:
 	vector<tEvent> m_vecEvent;
+
+	vector<CObject*> m_vecDead;
 
 public:
 	void update();
@@ -24,6 +26,5 @@ public:
 	{
 		m_vecEvent.push_back(_eve);
 	}
-
 };
 

@@ -2,13 +2,15 @@
 #include "CMissile.h"
 
 #include "CTimeMgr.h"
+#include "CCollider.h"
 
 CMissile::CMissile()
 	: m_fTheta(PI / 2.f)
-	, m_vDir(1.f, 1.f)
+	, m_vDir(1.f, -1.f)
 {
 	m_vDir.Normalize();
 	CreateCollider();
+	GetCollider()->SetScale(Vec2(15.f, 15.f));
 }
 
 CMissile::~CMissile()
@@ -37,4 +39,14 @@ void CMissile::render(HDC _dc)
 		, (int)(vPos.x + vScale.x / 2), (int)(vPos.y + vScale.y / 2));
 
 	Component_render(_dc);
+}
+
+void CMissile::OnCollisionEnter(CCollider* _pOther)
+{
+	CObject* pOtherObj = _pOther->GetObj();
+
+	if (pOtherObj->GetName() == L"Monster")
+	{
+		DeleteObject(this);
+	}
 }

@@ -15,9 +15,13 @@ public:
         m_vDir.Normalize();
     }
 
+
 public:
     virtual void update() override;
     virtual void render(HDC _dc) override;
+
+public:
+    virtual void OnCollisionEnter(CCollider* _pOther);
 
 public:
     CMissile();

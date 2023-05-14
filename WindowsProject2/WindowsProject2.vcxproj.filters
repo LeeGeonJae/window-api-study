@@ -156,6 +156,9 @@
     <ClInclude Include="CEventMgr.h">
       <Filter>Engine\03. Manager\EvenMgr</Filter>
     </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Engine\01.Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject2.rc">
@@ -228,6 +231,9 @@
     </ClCompile>
     <ClCompile Include="CEventMgr.cpp">
       <Filter>Engine\03. Manager\EvenMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Engine\01.Header</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
