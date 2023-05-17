@@ -34,6 +34,13 @@ public:
 		return Vec2(x + _vc.x, y + _vc.y);
 	}
 
+	Vec2 operator+=(Vec2 _vOther)
+	{
+		x += _vOther.x;
+		y += _vOther.y;
+		return *this;
+	}
+
 	Vec2 operator-(Vec2 _vc)
 	{
 		return Vec2(x - _vc.x, y - _vc.y);
@@ -42,6 +49,11 @@ public:
 	Vec2 operator*(Vec2 _vc)
 	{
 		return Vec2(x * _vc.x, y * _vc.y);
+	}
+
+	Vec2 operator*(int _i)
+	{
+		return Vec2(x * (float)_i, y * (float)_i);
 	}
 
 	Vec2 operator/(Vec2 _vc)

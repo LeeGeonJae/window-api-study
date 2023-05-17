@@ -20,6 +20,7 @@ void CCollisionMgr::init()
 {
 }
 
+// 
 void CCollisionMgr::update()
 {
 	for (UINT iRow = 0; iRow < (UINT)GROUP_TYPE::END; ++iRow)
@@ -133,6 +134,7 @@ bool CCollisionMgr::IsCollision(CCollider* _pLeftCol, CCollider* _pRightCol)
 	Vec2 vRightPos = _pRightCol->GetFinalPos();
 	Vec2 vRightScale = _pRightCol->GetScale();
 
+	// 두 콜리전이 겹쳤을 때 true
 	if (abs(vRightPos.x - vLeftPos.x) < (vLeftScale.x + vRightScale.x) / 2.f
 		&& abs(vRightPos.y - vLeftPos.y) < (vLeftScale.y + vRightScale.y) / 2.f)
 	{

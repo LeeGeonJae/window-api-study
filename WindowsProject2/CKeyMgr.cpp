@@ -36,12 +36,15 @@ int g_arrVK[(int)KEY::LAST] =
 	'N',
 	'M',
 	
-	VK_MENU,
-	VK_CONTROL,
-	VK_LSHIFT,
-	VK_SPACE,
-	VK_RETURN, 
-	VK_ESCAPE, 
+	VK_MENU,	// ALT
+	VK_CONTROL,	// CTRL
+	VK_LSHIFT,	// LSHIFT
+	VK_SPACE,	// SPACE BAR
+	VK_RETURN,	// ENTER
+	VK_ESCAPE,	// ESC
+
+	VK_LBUTTON,
+	VK_RBUTTON,
 };
 
 CKeyMgr::CKeyMgr()
@@ -56,6 +59,7 @@ CKeyMgr::~CKeyMgr()
 
 void CKeyMgr::init()
 {
+	// 키의 모든 상태를 false로 세팅
 	for (int i = 0; i < (int)KEY::LAST; ++i)
 	{
 		m_vecKey.push_back(tKeyInfo{ KEY_STATE::NONE, false });
@@ -114,8 +118,10 @@ void CKeyMgr::update()
 	}
 
 	// 윈도우 포커싱 해제상태
+	// 이것을 해주지 않으면 다른 창이 포커싱된 상태에서도 키가 입력되게 된다
 	else
 	{
+		// 만약에 윈도우 포커싱이 해제된 상태라면 모든 키의 상태를 AWAY와 NONE 상태로 전환하고 bPrevPush를 false로 세팅
 		for (int i = 0; i < (int)KEY::LAST; ++i)
 		{
 			m_vecKey[i].bPrevPush = false;

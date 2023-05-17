@@ -5,10 +5,10 @@
 #include "CCollider.h"
 
 CMissile::CMissile()
-	: m_fTheta(PI / 2.f)
-	, m_vDir(1.f, -1.f)
+	: m_fTheta((float)PI / 2.f)
+	, m_dir{}
+	, m_fLifeTiem(2.0f)
 {
-	m_vDir.Normalize();
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(15.f, 15.f));
 }
@@ -19,13 +19,34 @@ CMissile::~CMissile()
 
 void CMissile::update()
 {
+	m_fLifeTiem -= fDT;
+	if (m_fLifeTiem <= 0)
+	{
+		DeleteObject(this);
+	}
+
 	Vec2 vPos = GetPos();
 
 	//vPos.x += 600.f * cosf(m_fTheta) * fDT;
 	//vPos.y += 600.f * sinf(m_fTheta) * fDT;
 
-	vPos.x += 600.f * m_vDir.x * fDT;
-	vPos.y += 600.f * m_vDir.y * fDT;
+	switch (m_dir)
+	{
+	case OBJECT_DIR::UP:
+		vPos.y -= 1.5f * BOARD_TILE * fDT;
+		break;
+	case OBJECT_DIR::LEFT:
+		vPos.x -= 1.5f * BOARD_TILE * fDT;
+		break;
+	case OBJECT_DIR::RIGHT:
+		vPos.x += 1.5f * BOARD_TILE * fDT;
+		break;
+	case OBJECT_DIR::DOWN:
+		vPos.y += 1.5f * BOARD_TILE * fDT;
+		break;
+	default:
+		break;
+	}
 
 	SetPos(vPos);
 }

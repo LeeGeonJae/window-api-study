@@ -13,7 +13,7 @@ class CEventMgr
 private:
 	vector<tEvent> m_vecEvent;
 
-	vector<CObject*> m_vecDead;
+	set<CObject*> m_vecDead;
 
 public:
 	void update();

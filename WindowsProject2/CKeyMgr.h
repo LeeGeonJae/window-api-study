@@ -47,13 +47,15 @@ enum class KEY
 	SPACE,
 	ENTER,
 	ESC,
+	LBTN,
+	RBTN,
 
 	LAST,
 };
 
 struct tKeyInfo
 {
-	KEY_STATE	eState;		// 키의 상태값
+	KEY_STATE	eState;			// 키의 상태값
 	bool		bPrevPush;		// 이전 프레임에서 눌렸는지 여부
 };
 
@@ -66,7 +68,11 @@ public:
 
 public:
 	KEY_STATE GetKeyState(KEY _eKey) { return m_vecKey[(int)_eKey].eState; }
+	void SetMousePos(float _x, float _y) { Mouse_Pos.x = _x; Mouse_Pos.y = _y; }
+	Vec2 GetMousePos() { return Mouse_Pos; }
 
 private:
 	vector<tKeyInfo> m_vecKey;
+	Vec2 Mouse_Pos;
+
 };

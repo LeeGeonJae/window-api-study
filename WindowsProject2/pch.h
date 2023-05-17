@@ -18,6 +18,12 @@ using std::make_pair;
 using std::string;
 using std::wstring;
 
+#include <set>
+using std::set;
+
+#include <stack>
+using std::stack;
+
 #include <assert.h>
 #include <math.h>
 

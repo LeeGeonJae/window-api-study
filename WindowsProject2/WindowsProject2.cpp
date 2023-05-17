@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "WindowsProject2.h"
 #include "CCore.h"
+#include "CKeyMgr.h"
 
 #define MAX_LOADSTRING 100
 
@@ -55,7 +56,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    if (FAILED(CCore::GetInst()->Init(g_hWnd, POINT{ 1280, 768 })))
+    if (FAILED(CCore::GetInst()->Init(g_hWnd, POINT{ 16 * 120, 9 * 120 })))
     {
         MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
 
@@ -74,6 +75,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // PeekMessage : 메세지 유무와 관계없이 반환
     // 메세지가 있으면 true, 메세지가 없으면 false
     // 메세지큐에서 메세지를 확인한 경우 true, 메세지큐에 메세지가 없는 경우 false를 반환한다
+
+    int a = 0;
 
     while (true)
 	{
@@ -145,6 +148,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+// 윈도우 프로시저 함수 선언 ( 추가 : 이건재 )
+INT_PTR __stdcall TileCountProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -158,6 +164,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
+                // 메뉴 타일 개수 선택시 TILE_COUNT창 생성 ( 추가 : 이건재 )
+            case ID_MENU_TILE:                                                  
+            {
+                INT_PTR iRet = DialogBox(hInst, MAKEINTRESOURCE(IDD_TILE_COUNT), hWnd, TileCountProc);
+            }
+				break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
@@ -173,11 +185,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
-
-    case WM_LBUTTONDOWN:
-
+    case WM_MOUSEMOVE:
+        CKeyMgr::GetInst()->SetMousePos((float)LOWORD(lParam), (float)HIWORD(lParam));
         break;
-
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
@@ -210,7 +220,3 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-
-// 1. 플레이어 미사일 종류 추가
-// 2. 몬스터도 미사일 패턴 추가
-// 

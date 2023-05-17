@@ -37,10 +37,10 @@ void CTimeMgr::update()
 	// 이전카운트 값을 현재값으로 갱신 (다음번에 계산을 위해서)
 	m_llPrevCount = m_llcurCount;
 
+	// 만약에 중단점을 찍고 검사하는 디버깅 상태라면 시간이 흐르는 것을 방지하기 위해 만들어둔 전처리기
 #ifdef _DEBUG
 	if (m_dDT > (1. / 60.))
 		m_dDT = (1. / 60.);
-
 #endif
 }
 
@@ -54,7 +54,8 @@ void CTimeMgr::render()
 		m_iFPS = m_iCallCount;
 		m_dAcc = 0.;
 		m_iCallCount = 0;
-
+		
+		// 프레임 상태를 윈도우 창 제목에 설정
 		wchar_t szBuffer[255] = {};
 		swprintf_s(szBuffer, L"FPS : %d,    DT : %lf", m_iFPS, m_dDT);
 		SetWindowText(CCore::GetInst()->GetMainHWnd(), szBuffer);

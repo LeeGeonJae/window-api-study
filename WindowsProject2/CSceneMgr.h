@@ -16,4 +16,8 @@ public:
 private:
 	CScene* m_arrScene[(UINT)SCENE_TYPE::END];		// ¸ðµç ¾À ¸ñ·Ï
 	CScene* m_pCurScene;							// ÇöÀç ¾À
+
+private:
+	void ChangeScene(SCENE_TYPE _eNext);
+	friend class CEventMgr;
 };

@@ -5,20 +5,23 @@ class CMissile :
 {
 private:
     float m_fTheta;
-    Vec2  m_vDir;
+    OBJECT_DIR  m_dir;
+    float m_fLifeTiem;
 
 public:
     void SetDir(float _fTheta) { m_fTheta = _fTheta; }
-    void SetDir(Vec2 _vDir) 
+    void SetDir(OBJECT_DIR _vDir)
     { 
-        m_vDir = _vDir;
-        m_vDir.Normalize();
+        m_dir = _vDir;
     }
 
 
 public:
     virtual void update() override;
     virtual void render(HDC _dc) override;
+
+    // 객체들이 복사 생성자를 호출할 때, 클론 리턴
+    virtual CMissile* Clone() { return new CMissile(*this); }
 
 public:
     virtual void OnCollisionEnter(CCollider* _pOther);

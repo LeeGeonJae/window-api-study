@@ -3,6 +3,7 @@
 
 #include "CCore.h"
 
+// 펜 지정
 SelectGDI::SelectGDI(HDC _dc, PEN_TYPE _ePenType)
 	: m_hDC(_dc)
 	, m_hDefaultBrush(nullptr)
@@ -12,12 +13,13 @@ SelectGDI::SelectGDI(HDC _dc, PEN_TYPE _ePenType)
 	m_hDefaultPen = (HPEN)SelectObject(_dc, hPen);
 }
 
-SelectGDI::SelectGDI(HDC _dc, BRUSH_TYPE _ePenType)
+// 브러쉬 지정
+SelectGDI::SelectGDI(HDC _dc, BRUSH_TYPE _BrushType)
 	: m_hDC(_dc)
 	, m_hDefaultBrush(nullptr)
 	, m_hDefaultPen(nullptr)
 {
-	HBRUSH hBrush = CCore::GetInst()->GetBrush(_ePenType);
+	HBRUSH hBrush = CCore::GetInst()->GetBrush(_BrushType);
 	m_hDefaultBrush = (HBRUSH)SelectObject(_dc, hBrush);
 }
 
