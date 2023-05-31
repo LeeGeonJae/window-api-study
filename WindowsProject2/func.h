@@ -1,10 +1,14 @@
 #pragma once
 
 class CObject;
+class CTile;
+class CLever;
 
 void CreateObject(CObject* _pObj, GROUP_TYPE _eGroup);
 void DeleteObject(CObject* _pObj);
 void ChangeScene(SCENE_TYPE _eNext);
+void TriggerOn(CTile* _ptile);
+void LeverTriggerOn(CLever* _ptile);
 
 // 
 template<typename T>

@@ -2,7 +2,7 @@
 #include "CCollider.h"
 
 #include "CObject.h"
-#include "CCore.h"
+#include "CGameProcess.h"
 #include "SelectGDI.h"
 
 UINT CCollider::g_iNextID = 0;
@@ -29,31 +29,38 @@ CCollider::~CCollider()
 {
 }
 
-void CCollider::finalupdate()
+void CCollider::Finalupdate()
 {
 	// Object의 위치를 따라간다.
-	Vec2 vObjectPos = m_pOwner->GetPos();
+	Vector2 vObjectPos = m_pOwner->GetPos();
 	m_vFinalPos = vObjectPos + m_vOffsetPos;
 
 	assert(0 <= m_iCol);
 }
 
-void CCollider::render(HDC _dc)
+void CCollider::Render(HDC _dc)
 {
-	PEN_TYPE ePen = PEN_TYPE::GREEN;
+// 	PEN_TYPE ePen = PEN_TYPE::GREEN;
+// 
+// 	if (m_iCol)
+// 		ePen = PEN_TYPE::RED;
 
-	if (m_iCol)
-		ePen = PEN_TYPE::RED;
+	HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
+	HBRUSH hollowBrush = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
 
-	// 지역 변수라서 함수가 끝날 떄 소멸자가 호출이 되어서 알아서 Default값으로 되돌아가게 설정
-	SelectGDI p(_dc, ePen);
-	SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
-
+	HPEN defaultPen = (HPEN)SelectObject(_dc, greenPen);
+	HBRUSH defaultBrush = (HBRUSH)SelectObject(_dc, hollowBrush);
 	Rectangle(_dc
 		, (int)(m_vFinalPos.x - m_vScale.x / 2.f)
 		, (int)(m_vFinalPos.y - m_vScale.y / 2.f)
 		, (int)(m_vFinalPos.x + m_vScale.x / 2.f)
 		, (int)(m_vFinalPos.y + m_vScale.y / 2.f));
+
+	SelectObject(_dc, defaultPen);
+	SelectObject(_dc, defaultBrush);
+
+	DeleteObject(greenPen);
+	DeleteObject(hollowBrush);
 }
 
 void CCollider::OnCollision(CCollider* _pOther)

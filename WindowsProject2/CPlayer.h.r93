@@ -1,0 +1,48 @@
+#pragma once
+#include "CObject.h"
+#include "CTexture.h"
+
+class CPlayer :
+	public CObject
+{
+private:
+	CTexture* m_pTex;
+	float m_fMoveDelay;
+	float m_fShootDelay;
+	float m_fMoveMent;
+	float m_fMoveTerm;
+
+	POINT m_ptPos;
+	OBJECT_DIR m_dir;
+	bool m_bCanMove;
+
+public:
+	virtual void update();
+	virtual void render(HDC _dc);
+
+	void SetMovement(float _fMovement) { m_fMoveMent = _fMovement; };
+
+	POINT GetptPos() const
+	{
+		return m_ptPos;
+	}
+	void SetptPos(POINT val)
+	{
+		SetPos(Vec2{ (float)val.x, (float)val.y });
+		m_ptPos = val;
+	}
+	OBJECT_DIR GetDir() const
+	{
+		return m_dir;
+	}
+	void SetDir(OBJECT_DIR val)
+	{
+		m_dir = val;
+	}
+private:
+	void CreateMissile();
+
+public:
+	CPlayer();
+	~CPlayer();
+};

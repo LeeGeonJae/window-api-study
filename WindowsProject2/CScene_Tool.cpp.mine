@@ -1,0 +1,252 @@
+#include "pch.h"
+#include "CScene_Tool.h"
+
+#include "CKeyMgr.h"
+#include "CTile.h"
+#include "CCore.h"
+
+#include "CResMgr.h"
+#include "CSceneMgr.h"
+#include "CPathMgr.h"
+
+#include "resource.h"
+
+
+// CScene_Tool 클래스 생성 ( 추가 : 이건재 )
+CScene_Tool::CScene_Tool()
+{
+}
+
+CScene_Tool::~CScene_Tool()
+{
+}
+
+void CScene_Tool::Enter()
+{
+	// 타일 생성
+	CreateTile(5, 5);
+}
+
+void CScene_Tool::Exit()
+{
+}
+
+void CScene_Tool::update()
+{
+	// 부모쪽 update()함수를 호출
+	CScene::update();
+
+	SetTileIdx();
+
+	if (KEY_TAP(KEY::ENTER))
+	{
+		// 이벤트 등록 ( 추가 : 이건재 )
+		ChangeScene(SCENE_TYPE::START);
+	}
+	if (KEY_TAP(KEY::LSHIFT))
+	{
+		// 타일 저장하기 ( 추가 : 이건재 )
+		SaveTileData();
+	}
+	if (KEY_TAP(KEY::CTRL))
+	{
+		// 타일 불러오기 ( 추가 : 이건재 )
+		LoadTileDate();
+	}
+}
+
+// 타일 마우스 좌표 찾아서 해당 타일 인덱스 바꾸기 ( 추가 : 이건재 )
+void CScene_Tool::SetTileIdx()
+{
+	// 좌클릭 했을 때 마우스 좌표 찾아서 타일 인덱스 더하기 ( 추가 : 이건재 )
+	if (KEY_TAP(KEY::LBTN))
+	{
+		Vec2 vMousePos = CKeyMgr::GetInst()->GetMousePos();
+
+		int iTileX = (int)GetTileX();
+		int iTileY = (int)GetTileY();
+
+		int iCol = (int)vMousePos.x / BOARD_TILE;
+		int iRow = (int)vMousePos.y / BOARD_TILE;
+
+		if (vMousePos.x < 0.f || iTileX <= iCol
+			|| vMousePos.y < 0.f || iTileY <= iRow)
+		{
+			return;
+		}
+
+		UINT iIdx = iRow * iTileX + iCol;
+
+		const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
+		((CTile*)vecTile[iIdx])->AddImgIdx();
+	}
+	
+	// 우클릭 했을 때 마우스 좌표 찾아서 타일 인덱스 빼기 ( 추가 : 이건재 )
+	if (KEY_TAP(KEY::RBTN))
+	{
+		Vec2 vMousePos = CKeyMgr::GetInst()->GetMousePos();
+
+		int iTileX = (int)GetTileX();
+		int iTileY = (int)GetTileY();
+
+		int iCol = (int)vMousePos.x / BOARD_TILE;
+		int iRow = (int)vMousePos.y / BOARD_TILE;
+
+		if (vMousePos.x < 0.f || iTileX <= iCol
+			|| vMousePos.y < 0.f || iTileY <= iRow)
+		{
+			return;
+		}
+
+		UINT iIdx = iRow * iTileX + iCol;
+
+		const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
+		((CTile*)vecTile[iIdx])->MinusImgIdx();
+	}
+}
+
+// 윈도우에서 제공해주는 함수를 통해 구조체 저장하고 파일 저장하기 ( 추가 : 이건재 )
+void CScene_Tool::SaveTileData()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = CCore::GetInst()->GetMainHWnd();
+	ofn.lpstrFile = szName;
+	ofn.nMaxFile = sizeof(szName);
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";				// ALL\0*. 은 ALL에 대항하는 아무 이름이 와도 되고 아무 확장자여도 된다
+	ofn.nFileExtension = 0;
+	ofn.lpstrFileTitle = nullptr;								// 수정 가능한 타이틀 제목
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTIleFolder = CPathMgr::GetInst()->GetContentPath();
+	strTIleFolder += L"tile";
+	
+	ofn.lpstrInitialDir = strTIleFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+	
+	// Modal
+	// 파일을 저장할 때 절대 경로의 주소가 szName의 문자 배열에 담긴다
+	if (GetSaveFileName(&ofn))
+	{
+		SaveTile(szName);
+	}
+}
+
+// 윈도우에서 제공해주는 함수를 통해 구조체 저장하고 파일 불러오기 ( 추가 : 이건재 )
+void CScene_Tool::LoadTileDate()
+{
+	wchar_t szName[256] = {};
+
+	OPENFILENAME ofn = {};
+
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = CCore::GetInst()->GetMainHWnd();
+	ofn.lpstrFile = szName;
+	ofn.nMaxFile = sizeof(szName);
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";				// ALL\0*. 은 ALL에 대항하는 아무 이름이 와도 되고 아무 확장자여도 된다
+	ofn.nFileExtension = 0;
+	ofn.lpstrFileTitle = nullptr;								// 수정 가능한 타이틀 제목
+	ofn.nMaxFileTitle = 0;
+
+	wstring strTIleFolder = CPathMgr::GetInst()->GetContentPath();
+	strTIleFolder += L"tile";
+
+	ofn.lpstrInitialDir = strTIleFolder.c_str();
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+	// Modal
+	// 파일을 저장할 때 전체 경로의 주소가 szName의 문자 배열에 담긴다
+	if (GetOpenFileName(&ofn))
+	{
+		wstring strFilePath = szName;
+		
+		// 상대 경로 = 전체 경로 - 절대 경로
+		size_t iAbsLen = wcslen(CPathMgr::GetInst()->GetContentPath());
+		size_t iFullLen = strFilePath.length();
+		
+		wstring strRelativePath = strFilePath.substr(iAbsLen, iFullLen - iAbsLen);
+
+		LoadTile(strRelativePath);
+	}
+}
+
+// 툴 씬 타일 변환하고 저장하기 ( 추가 : 이건재 )
+void CScene_Tool::SaveTile(const wstring& _strFilePath)
+{
+	// 커널 오브젝트
+	FILE* pFile = nullptr;
+
+	// 세 번째 인자 w는 쓰기, r는 읽기, rb, wb는 이진수 데이터로 읽겠다
+	// 아스키 코드 중에 ESC = 27로 만약에 r로 읽다가 27을 읽으면 그대로 탈출하는 현상이 발생할 수도 있기 떄문에 rb, wb를 쓴다
+	// 쓰기 모드라면 파일이 없어도 쓰는 모드이기 때문에 파일이 생성된다
+	_wfopen_s(&pFile, _strFilePath.c_str(), L"wb");
+	assert(pFile);
+
+	// 데이터 저장
+	// 타일 가로세로 개수 저장
+	UINT xCount = GetTileX();
+	UINT yCount = GetTileY();
+
+	fwrite(&xCount, sizeof(UINT), 1, pFile);
+	fwrite(&yCount, sizeof(UINT), 1, pFile);
+
+	// 모든 타일들을 개별적으로 저장할 데이터를 저장하게 함
+	const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
+
+	for (size_t i = 0; i < vecTile.size(); i++)
+	{
+		((CTile*)vecTile[i])->Save(pFile);
+	}
+
+	fclose(pFile);
+}
+
+
+
+
+
+
+// Tile Count 윈도우 창 프로시저 ( 추가 : 이건재 )
+// ======================
+// Tile Count Window Proc
+// ======================
+INT_PTR __stdcall TileCountProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
+
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK)
+		{
+			// GetDlgItemInt는 텍스트 박스 안에 있는 문자열 데이터를 int형으로 바꿔서 반환해준 것이다
+			UINT iXCount = GetDlgItemInt(hDlg, IDC_EDIT1, nullptr, false);
+			UINT iYCount = GetDlgItemInt(hDlg, IDC_EDIT2, nullptr, false);
+
+			CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+
+			// ToolScene 확인
+			// pCurScene이 TooScene이면 ToolScene 반환, 아니면 nullptr 반환
+			CScene_Tool* pToolScene = dynamic_cast<CScene_Tool*>(pCurScene);
+			assert(pToolScene);
+
+			pToolScene->DeleteGroup(GROUP_TYPE::TILE);
+			pToolScene->CreateTile(iXCount, iYCount);
+
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		else if (LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
+}

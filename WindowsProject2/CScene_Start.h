@@ -4,11 +4,10 @@
 class CScene_Start : public CScene
 {
 public:
-	virtual void update();
-	virtual void Enter();
-	virtual void Exit();
+	virtual void Enter(bool _isPast);
+	virtual bool Exit();
 
 public:
-	CScene_Start();
+	CScene_Start(HWND hWnd, HDC hDC, POINT screenRes);
 	~CScene_Start();
 };

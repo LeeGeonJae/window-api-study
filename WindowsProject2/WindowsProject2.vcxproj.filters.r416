@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="WindowsProject2.cpp" />
+    <ClCompile Include="CCore.cpp">
+      <Filter>02 Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>04 Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CRes.cpp">
+      <Filter>06 Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>05 Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>01 Header</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGDI.cpp">
+      <Filter>08 Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>03 Manager\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventMgr.cpp">
+      <Filter>03 Manager\EventMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>03 Manager\TimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneMgr.cpp">
+      <Filter>03 Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>03 Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>03 Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>03 Manager\ResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissile.cpp">
+      <Filter>04 Object\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>04 Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>04 Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Start.cpp">
+      <Filter>05 Scene\Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Tool.cpp">
+      <Filter>05 Scene\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>06 Resource\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>06 Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>07 Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>07 Component\Animator\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>07 Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerState.cpp">
+      <Filter>04 Object\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerMovingState.cpp">
+      <Filter>04 Object\Player\State\Moving</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerIdleState.cpp">
+      <Filter>04 Object\Player\State\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoard.cpp">
+      <Filter>04 Object\Board</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WindowsProject2.h" />
+    <ClInclude Include="CCore.h">
+      <Filter>02 Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>04 Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CRes.h">
+      <Filter>06 Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>05 Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>01 Header</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>01 Header</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>01 Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGDI.h">
+      <Filter>08 Module</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>01 Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>03 Manager\CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventMgr.h">
+      <Filter>03 Manager\EventMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>03 Manager\TimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMgr.h">
+      <Filter>03 Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>03 Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>03 Manager\PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>03 Manager\ResMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissile.h">
+      <Filter>04 Object\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>04 Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>04 Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Start.h">
+      <Filter>05 Scene\Start</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Tool.h">
+      <Filter>05 Scene\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>06 Resource\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>06 Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>07 Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>07 Component\Animator\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>07 Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerState.h">
+      <Filter>04 Object\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerMovingState.h">
+      <Filter>04 Object\Player\State\Moving</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerIdleState.h">
+      <Filter>04 Object\Player\State\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoard.h">
+      <Filter>04 Object\Board</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WindowsProject2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico" />
+    <Image Include="WindowsProject2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="01 Header">
+      <UniqueIdentifier>{1164036a-6c94-44ce-84e3-3efccefa9509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02 Core">
+      <UniqueIdentifier>{0b94c28e-a83f-463f-9c52-7bdd8a3f0edc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager">
+      <UniqueIdentifier>{dcde9621-255e-48de-ab0d-631a2ce708b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object">
+      <UniqueIdentifier>{15cb8c99-c671-4954-a3ae-0a86c016b4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05 Scene">
+      <UniqueIdentifier>{4a43f9f1-58e7-4e3b-a485-74fc654f6607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06 Resource">
+      <UniqueIdentifier>{4f6f961c-c6ff-4da1-b414-0a7e607c1fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Component">
+      <UniqueIdentifier>{10ebc3b1-aed9-41b9-afbf-7e0c341efd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08 Module">
+      <UniqueIdentifier>{260125df-f3fd-4bc6-bc61-f6ea5087d57e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\EventMgr">
+      <UniqueIdentifier>{16806766-11b7-4b04-b31d-d28eb676ee07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\CollisionMgr">
+      <UniqueIdentifier>{a821a73a-5402-4db8-a56a-53492906f313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\KeyMgr">
+      <UniqueIdentifier>{27790abf-7bbf-46fd-887a-249d4179c2bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\PathMgr">
+      <UniqueIdentifier>{13477902-6637-4eb8-88f3-e730a44ab718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\ResMgr">
+      <UniqueIdentifier>{e417673e-439d-4568-a7dc-b66ba761bdbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\SceneMgr">
+      <UniqueIdentifier>{eee5b947-e56a-4096-aea4-461ddfd49780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03 Manager\TimeMgr">
+      <UniqueIdentifier>{a682bddd-21ff-48b7-9843-3886357f6469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Missile">
+      <UniqueIdentifier>{fe32e311-8c13-4920-b1e6-2d1d7475e086}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Player">
+      <UniqueIdentifier>{b8d318db-4333-4f76-a0cf-4b5e0f009ab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05 Scene\Start">
+      <UniqueIdentifier>{d9d6f23a-7e31-49bb-9ca7-96d93d71563d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05 Scene\Tool">
+      <UniqueIdentifier>{db2a7f3c-e904-4f89-9bf1-224a3e2c138b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06 Resource\Texture">
+      <UniqueIdentifier>{86d59fdd-3bd6-4766-83b2-f2133ba15f53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06 Resource\Sound">
+      <UniqueIdentifier>{e6dae973-bb93-4371-8b65-3450a50c1bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Component\Animator">
+      <UniqueIdentifier>{48899ae2-998d-4ef5-9337-c8754fb8296b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Component\Animator\Animation">
+      <UniqueIdentifier>{35602a99-52e5-414e-906e-c2b0223ca41b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Monster">
+      <UniqueIdentifier>{55f442ff-68c4-4b94-9b72-700ad9a3c23c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07 Component\Collider">
+      <UniqueIdentifier>{2f3ff065-8558-4ed9-b2dd-2a22c51f310a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Player\State">
+      <UniqueIdentifier>{a505b228-1f19-462a-95bf-867608a6d21d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Player\State\Moving">
+      <UniqueIdentifier>{a335a0ee-42da-414a-85f3-47314145262f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Player\State\Idle">
+      <UniqueIdentifier>{3f46985a-828b-4a33-8e5c-ab916fb3313d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Object\Board">
+      <UniqueIdentifier>{4d19ef7d-5c2a-476f-8464-8484d69e367d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

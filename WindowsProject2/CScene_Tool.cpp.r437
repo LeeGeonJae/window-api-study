@@ -1,0 +1,116 @@
+#include "pch.h"
+#include "CScene_Tool.h"
+
+#include "CKeyMgr.h"
+#include "CTile.h"
+
+#include "CResMgr.h"
+#include "CSceneMgr.h"
+
+#include "resource.h"
+
+// CScene_Tool 클래스 생성 ( 추가 : 이건재 )
+CScene_Tool::CScene_Tool()
+{
+}
+
+CScene_Tool::~CScene_Tool()
+{
+}
+
+void CScene_Tool::Enter()
+{
+	// 타일 생성
+	CreateTile(5, 5);
+}
+
+void CScene_Tool::Exit()
+{
+}
+
+void CScene_Tool::update()
+{
+	// 부모쪽 update()함수를 호출
+	CScene::update();
+
+	SetTileIdx();
+
+	if (KEY_TAP(KEY::ENTER))
+	{
+		// 이벤트 등록
+		ChangeScene(SCENE_TYPE::START);
+
+
+	}
+}
+
+void CScene_Tool::SetTileIdx()
+{
+	if (KEY_TAP(KEY::LBTN))
+	{
+		Vec2 vMousePos = CKeyMgr::GetInst()->GetMousePos();
+
+		int iTileX = (int)GetTileX();
+		int iTileY = (int)GetTileY();
+
+		int iCol = (int)vMousePos.x / BOARD_TILE;
+		int iRow = (int)vMousePos.y / BOARD_TILE;
+
+		if (iCol < 0 || iTileX <= iCol)
+		{
+			return;
+		}
+
+		UINT iIdx = iRow * iTileX + iCol;
+
+		const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
+		((CTile*)vecTile[iIdx])->AddImgIdx();
+	}
+}
+
+
+
+
+
+
+// Tile Count 윈도우 창 프로시저 ( 추가 : 이건재 )
+// ======================
+// Tile Count Window Proc
+// ======================
+INT_PTR __stdcall TileCountProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
+
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK)
+		{
+			// GetDlgItemInt는 텍스트 박스 안에 있는 문자열 데이터를 int형으로 바꿔서 반환해준 것이다
+			UINT iXCount = GetDlgItemInt(hDlg, IDC_EDIT1, nullptr, false);
+			UINT iYCount = GetDlgItemInt(hDlg, IDC_EDIT2, nullptr, false);
+
+			CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
+
+			// ToolScene 확인
+			// pCurScene이 TooScene이면 ToolScene 반환, 아니면 nullptr 반환
+			CScene_Tool* pToolScene = dynamic_cast<CScene_Tool*>(pCurScene);
+			assert(pToolScene);
+
+			pToolScene->DeleteGroup(GROUP_TYPE::TILE);
+			pToolScene->CreateTile(iXCount, iYCount);
+
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		else if (LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
+}

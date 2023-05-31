@@ -2,8 +2,9 @@
 #include "CSceneMgr.h"
 #include "CScene_Start.h"
 #include "CScene_Tool.h"
+#include "CScene_Title.h"
 #include "CEventMgr.h"
-
+#include "CTrapTest.h"
 
 CSceneMgr::CSceneMgr()
 	: m_pCurScene(nullptr)
@@ -33,12 +34,18 @@ void CSceneMgr::Init()
 	m_arrScene[(UINT)SCENE_TYPE::TOOL] = new CScene_Tool;
 	m_arrScene[(UINT)SCENE_TYPE::TOOL]->SetName(L"Tool Scene");
 
+	m_arrScene[(UINT)SCENE_TYPE::TEST] = new CTrapTest;
+	m_arrScene[(UINT)SCENE_TYPE::TEST]->SetName(L"Test Scene");
+
+	m_arrScene[(UINT)SCENE_TYPE::TITLE] = new CScene_Title;
+	m_arrScene[(UINT)SCENE_TYPE::TITLE]->SetName(L"Title Scene");
+
 	//m_arrScene[(UINT)SCENE_TYPE::TOOL] = new CScene_Tool;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new CScene_Stage_01;
 	//m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new CScene_Stage_02;
 
 	// ÇöÀç ¾À ÁöÁ¤
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::TOOL];
+	SetCurScene(m_arrScene[(UINT)SCENE_TYPE::TEST]);
 	m_pCurScene->Enter();
 }
 
@@ -58,6 +65,7 @@ void CSceneMgr::render(HDC _dc)
 void CSceneMgr::ChangeScene(SCENE_TYPE _eNext)
 {
 	m_pCurScene->Exit();
-	m_pCurScene = m_arrScene[(UINT)_eNext];
+	SetCurScene(m_arrScene[(UINT)_eNext]);
 	m_pCurScene->Enter();
 }
+

@@ -8,29 +8,29 @@ private:
 	static UINT g_iNextID;
 
 	CObject* m_pOwner;			// Collider를 소유하고 있는 오브젝트
-	Vec2	m_vOffsetPos;		// 오브젝트로 부터 상대적인 위치
-	Vec2	m_vFinalPos;		// finalupdate 에서 매 프레임 마다 계산
-	Vec2	m_vScale;			// 충돌체 크기
+	Vector2	m_vOffsetPos;		// 오브젝트로 부터 상대적인 위치
+	Vector2	m_vFinalPos;		// finalupdate 에서 매 프레임 마다 계산
+	Vector2	m_vScale;			// 충돌체 크기
 
 	UINT	m_iID;				// 충돌체 고유한 ID 값
 	UINT	m_iCol;				
 	
 
 public:
-	void SetOffsetPos(Vec2 _vPos) { m_vOffsetPos = _vPos; }
-	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
+	void SetOffsetPos(Vector2 _vPos) { m_vOffsetPos = _vPos; }
+	void SetScale(Vector2 _vScale) { m_vScale = _vScale; }
 
-	Vec2 GetOffsetPos() { return m_vOffsetPos; }
-	Vec2 GetScale() { return m_vScale; }
-	Vec2 GetFinalPos() { return m_vFinalPos; }
+	Vector2 GetOffsetPos() { return m_vOffsetPos; }
+	Vector2 GetScale() { return m_vScale; }
+	Vector2 GetFinalPos() { return m_vFinalPos; }
 
 	CObject* GetObj() { return m_pOwner; }
 
 	UINT GetID() { return m_iID; }
 
 public:
-	void finalupdate();
-	void render(HDC _dc);
+	void Finalupdate();
+	void Render(HDC _dc);
 
 public:
 	// 충돌 시점 함수

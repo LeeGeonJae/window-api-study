@@ -72,9 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Output\bin_debug\</OutDir>
+    <IncludePath>$(SolutionDir)Output\bin\inc;$(IncludePath)</IncludePath>
+    <ReferencePath>$(SolutionDir)Output\bin\lib;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\bin\</OutDir>
+    <IncludePath>$(SolutionDir)Output\bin\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Output\bin\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,10 +121,12 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>fmod_vc.lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,93 +137,270 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CBoard.h" />
-    <ClInclude Include="CAnimation.h" />
-    <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CBtnUI.h" />
+    <ClInclude Include="CClock.h" />
+    <ClInclude Include="CClockConut.h" />
     <ClInclude Include="CCollider.h" />
-    <ClInclude Include="CCollisionMgr.h" />
-    <ClInclude Include="CCore.h" />
+    <ClInclude Include="CCollisionManager.h" />
+    <ClInclude Include="CContinue.h" />
+    <ClInclude Include="CCredit.h" />
+    <ClInclude Include="CCutScene.h" />
+    <ClInclude Include="CDoor.h" />
+    <ClInclude Include="CDrain.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="CEndSCene.h" />
+    <ClInclude Include="CFootButton.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="CGameProcess.h" />
     <ClInclude Include="CEventMgr.h" />
-    <ClInclude Include="CKeyMgr.h" />
-    <ClInclude Include="CMissile.h" />
+    <ClInclude Include="CFire.h" />
+    <ClInclude Include="CGuardian.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="CKeyManager.h" />
+    <ClInclude Include="CLever.h" />
+    <ClInclude Include="CLogo.h" />
+    <ClInclude Include="CMiniMap.h" />
+    <ClInclude Include="CMissile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CMonster.h" />
     <ClInclude Include="CObject.h" />
-    <ClInclude Include="CPathMgr.h" />
+    <ClInclude Include="CPanelUI.h" />
+    <ClInclude Include="CPathManager.h" />
     <ClInclude Include="CPlayer.h" />
-    <ClInclude Include="CPlayerIdleState.h" />
-    <ClInclude Include="CPlayerMovingState.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="CPoison.h" />
+    <ClInclude Include="CPoisonCount.h" />
+    <ClInclude Include="CPreferences.h" />
     <ClInclude Include="CRes.h" />
-    <ClInclude Include="CResMgr.h" />
+    <ClInclude Include="CReStart.h" />
     <ClInclude Include="CScene.h" />
-    <ClInclude Include="CSceneMgr.h" />
+    <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CScene_Selcet.h" />
     <ClInclude Include="CScene_Start.h" />
+    <ClInclude Include="CScene_Title.h" />
     <ClInclude Include="CScene_Tool.h" />
     <ClInclude Include="CSound.h" />
-    <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CSpider.h" />
+    <ClInclude Include="CStage1_1.h" />
+    <ClInclude Include="CStage1_2.h" />
+    <ClInclude Include="CStage1_3.h" />
+    <ClInclude Include="CStage1_5.h" />
+    <ClInclude Include="CStage1_6.h" />
+    <ClInclude Include="CStage1_7.h" />
+    <ClInclude Include="CStage1_8.h" />
+    <ClInclude Include="CStage2_1.h" />
+    <ClInclude Include="CStage2_2.h" />
+    <ClInclude Include="CStage2_3.h" />
+    <ClInclude Include="CStage2_4.h" />
+    <ClInclude Include="CStage2_5.h" />
+    <ClInclude Include="CStage2_6.h" />
+    <ClInclude Include="CStage3_1.h" />
+    <ClInclude Include="CStage3_2.h" />
+    <ClInclude Include="CStageSelcet.h" />
+    <ClInclude Include="CStage_end.h" />
+    <ClInclude Include="CStone.h" />
+    <ClInclude Include="CThron.h" />
     <ClInclude Include="CTile.h" />
+    <ClInclude Include="CTimeGuardian.h" />
     <ClInclude Include="CTimeMgr.h" />
+    <ClInclude Include="CTrap.h" />
+    <ClInclude Include="CTrapArrow.h" />
+    <ClInclude Include="CTrapTest.h" />
+    <ClInclude Include="CTrigger.h" />
     <ClInclude Include="CUI.h" />
+    <ClInclude Include="CUIMgr.h" />
+    <ClInclude Include="CutSceneObject.h" />
+    <ClInclude Include="CWhip.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="EmptyObject.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="EndSceneObject.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="func.h" />
+    <ClInclude Include="CMainMenu.h" />
+    <ClInclude Include="CGameEixt.h" />
+    <ClInclude Include="CGameStart.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="CPlayerState.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="CPoisonTile.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SelectGDI.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="StageBtn.h" />
+    <ClInclude Include="Stage1_2Btn.h" />
+    <ClInclude Include="Stage1_3Btn.h" />
+    <ClInclude Include="Stage1_4Btn.h" />
+    <ClInclude Include="Stage1_5Btn.h" />
+    <ClInclude Include="Stage1_6Btn.h" />
+    <ClInclude Include="Stage1_7Btn.h" />
+    <ClInclude Include="Stage1_8Btn.h" />
+    <ClInclude Include="Stage2_1Btn.h" />
+    <ClInclude Include="StageRelics.h" />
+    <ClInclude Include="Stages.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Texture.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="WindowsProject2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CBoard.cpp" />
-    <ClCompile Include="CAnimation.cpp" />
-    <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CBtnUI.cpp" />
+    <ClCompile Include="CClock.cpp" />
+    <ClCompile Include="CClockConut.cpp" />
     <ClCompile Include="CCollider.cpp" />
-    <ClCompile Include="CCollisionMgr.cpp" />
-    <ClCompile Include="CCore.cpp" />
+    <ClCompile Include="CCollisionManager.cpp" />
+    <ClCompile Include="CContinue.cpp" />
+    <ClCompile Include="CCredit.cpp" />
+    <ClCompile Include="CCutScene.cpp" />
+    <ClCompile Include="CDoor.cpp" />
+    <ClCompile Include="CDrain.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CEndSCene.cpp" />
+    <ClCompile Include="CFootButton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CGameProcess.cpp" />
     <ClCompile Include="CEventMgr.cpp" />
-    <ClCompile Include="CKeyMgr.cpp" />
-    <ClCompile Include="CMissile.cpp" />
+    <ClCompile Include="CFire.cpp" />
+    <ClCompile Include="CGuardian.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CKeyManager.cpp" />
+    <ClCompile Include="CLever.cpp" />
+    <ClCompile Include="CLogo.cpp" />
+    <ClCompile Include="CMiniMap.cpp" />
+    <ClCompile Include="CMissile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CMonster.cpp" />
     <ClCompile Include="CObject.cpp" />
-    <ClCompile Include="CPathMgr.cpp" />
+    <ClCompile Include="CPanelUI.cpp" />
+    <ClCompile Include="CPathManager.cpp" />
     <ClCompile Include="CPlayer.cpp" />
-    <ClCompile Include="CPlayerIdleState.cpp" />
-    <ClCompile Include="CPlayerMovingState.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="CPoison.cpp" />
+    <ClCompile Include="CPoisonCount.cpp" />
+    <ClCompile Include="CPreferences.cpp" />
     <ClCompile Include="CRes.cpp" />
-    <ClCompile Include="CResMgr.cpp" />
+    <ClCompile Include="CReStart.cpp" />
     <ClCompile Include="CScene.cpp" />
-    <ClCompile Include="CSceneMgr.cpp" />
+    <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CScene_Selcet.cpp" />
     <ClCompile Include="CScene_Start.cpp" />
+    <ClCompile Include="CScene_Title.cpp" />
     <ClCompile Include="CScene_Tool.cpp" />
     <ClCompile Include="CSound.cpp" />
-    <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CSpider.cpp" />
+    <ClCompile Include="CStage1_1.cpp" />
+    <ClCompile Include="CStage1_2.cpp" />
+    <ClCompile Include="CStage1_3.cpp" />
+    <ClCompile Include="CStage1_5.cpp" />
+    <ClCompile Include="CStage1_6.cpp" />
+    <ClCompile Include="CStage1_7.cpp" />
+    <ClCompile Include="CStage1_8.cpp" />
+    <ClCompile Include="CStage2_1.cpp" />
+    <ClCompile Include="CStage2_2.cpp" />
+    <ClCompile Include="CStage2_3.cpp" />
+    <ClCompile Include="CStage2_4.cpp" />
+    <ClCompile Include="CStage2_5.cpp" />
+    <ClCompile Include="CStage2_6.cpp" />
+    <ClCompile Include="CStage3_1.cpp" />
+    <ClCompile Include="CStage3_2.cpp" />
+    <ClCompile Include="CStageSelcet.cpp" />
+    <ClCompile Include="CStage_end.cpp" />
+    <ClCompile Include="CStone.cpp" />
+    <ClCompile Include="CThron.cpp" />
     <ClCompile Include="CTile.cpp" />
+    <ClCompile Include="CTimeGuardian.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
+    <ClCompile Include="CTrap.cpp" />
+    <ClCompile Include="CTrapArrow.cpp" />
+    <ClCompile Include="CTrapTest.cpp" />
+    <ClCompile Include="CTrigger.cpp" />
     <ClCompile Include="CUI.cpp" />
+    <ClCompile Include="CUIMgr.cpp" />
+    <ClCompile Include="CutSceneObject.cpp" />
+    <ClCompile Include="CWhip.cpp" />
+    <ClCompile Include="EmptyObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="EndSceneObject.cpp" />
     <ClCompile Include="func.cpp" />
-    <ClCompile Include="CPlayerState.cpp">
+    <ClCompile Include="CMainMenu.cpp" />
+    <ClCompile Include="CGameEixt.cpp" />
+    <ClCompile Include="CGameStart.cpp" />
+    <ClCompile Include="CPoisonTile.cpp" />
+    <ClCompile Include="SelectGDI.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="StageBtn.cpp" />
+    <ClCompile Include="Stage1_2Btn.cpp" />
+    <ClCompile Include="Stage1_3Btn.cpp" />
+    <ClCompile Include="Stage1_4Btn.cpp" />
+    <ClCompile Include="Stage1_5Btn.cpp" />
+    <ClCompile Include="Stage1_6Btn.cpp" />
+    <ClCompile Include="Stage1_7Btn.cpp" />
+    <ClCompile Include="Stage1_8Btn.cpp" />
+    <ClCompile Include="Stage2_1Btn.cpp" />
+    <ClCompile Include="StageRelics.cpp" />
+    <ClCompile Include="Texture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SelectGDI.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="WindowsProject2.cpp" />
   </ItemGroup>
   <ItemGroup>

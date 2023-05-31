@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "CTimeMgr.h"
-#include "CCore.h"
+#include "CGameProcess.h"
 
 
-CTimeMgr::CTimeMgr()
+CTimeManager::CTimeManager()
 	:m_llcurCount{}
 	, m_llPrevCount{}
 	, m_llFrequency{}
@@ -13,12 +13,12 @@ CTimeMgr::CTimeMgr()
 
 }
 
-CTimeMgr::~CTimeMgr()
+CTimeManager::~CTimeManager()
 {
 
 }
 
-void CTimeMgr::init()
+void CTimeManager::Initialize()
 {
 	// 현재 카운트
 	QueryPerformanceCounter(&m_llPrevCount);
@@ -27,7 +27,7 @@ void CTimeMgr::init()
 	QueryPerformanceFrequency(&m_llFrequency);
 }
 
-void CTimeMgr::update()
+void CTimeManager::Update()
 {
 	QueryPerformanceCounter(&m_llcurCount);
 
@@ -44,7 +44,7 @@ void CTimeMgr::update()
 #endif
 }
 
-void CTimeMgr::render()
+void CTimeManager::Render()
 {
 	++m_iCallCount;
 	m_dAcc += m_dDT;	// DT 누적
@@ -54,10 +54,5 @@ void CTimeMgr::render()
 		m_iFPS = m_iCallCount;
 		m_dAcc = 0.;
 		m_iCallCount = 0;
-		
-		// 프레임 상태를 윈도우 창 제목에 설정
-		wchar_t szBuffer[255] = {};
-		swprintf_s(szBuffer, L"FPS : %d,    DT : %lf", m_iFPS, m_dDT);
-		SetWindowText(CCore::GetInst()->GetMainHWnd(), szBuffer);
 	}
 }

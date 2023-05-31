@@ -1,5 +1,5 @@
 #pragma once
 #include "Resource.h"
 
-class CCore;
-extern CCore core;
+class CGameProcess;
+extern CGameProcess core;

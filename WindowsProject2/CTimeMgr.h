@@ -1,17 +1,26 @@
 #pragma once
 
 
-class CTimeMgr
+class CTimeManager
 {
-	SINGLE(CTimeMgr);
 public:
-	void init();
-	void update();
-	void render();
+	static CTimeManager* GetInstance()
+	{
+		static CTimeManager mgr;	///CTimeManager타입인 객체 mgr을 만든다. 즉, mgr이 Instance(인스턴스). 싱글턴을 쓰면 mgr을 찾기가 어려워서 가능하면 안쓰는게 좋다
+		return &mgr;
+	}
+private:
+	CTimeManager();
+	~CTimeManager();
+
+public:
+	void Initialize();
+	void Update();
+	void Render();
 
 public:
 	double GetDT() { return m_dDT; }
-	float GetfDT() { return (float)m_dDT; }
+	float GetfDT() { return (float)m_dDT; }	
 
 private:
 	LARGE_INTEGER	m_llcurCount;

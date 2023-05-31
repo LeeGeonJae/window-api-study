@@ -16,7 +16,7 @@ private:
 	set<CObject*> m_vecDead;
 
 public:
-	void update();
+	void Update();
 
 private:
 	void Excute(const tEvent& _eve);

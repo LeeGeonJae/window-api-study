@@ -7,12 +7,18 @@
 #include <iostream>
 #include <math.h>
 
+//Exit ÇÔ¼ö...
+#include <stdlib.h>
+
 #include <vector>
 using std::vector;
 
 #include <map>
 using std::map;
 using std::make_pair;
+
+#include <list>
+using std::list;
 
 #include <string>
 using std::string;

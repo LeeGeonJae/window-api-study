@@ -1,0 +1,23 @@
+#pragma once
+#include "CObject.h"
+#include "CTexture.h"
+
+class CPlayer :
+    public CObject
+{
+private:
+    // 리소스 파일을 공유 받아서 써야 하는 것이니 복사 생성자를 생성할 필요가 없다.
+    CTexture* m_pTex;
+
+public:
+    virtual void update();
+    virtual void render(HDC _dc);
+    virtual CPlayer* Clone() { return new CPlayer(*this); }
+
+private:
+    void CreateMissile();
+
+public:
+    CPlayer();
+    ~CPlayer();
+};

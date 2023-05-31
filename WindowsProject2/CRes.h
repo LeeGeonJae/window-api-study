@@ -11,9 +11,8 @@ public:
 
 	const wstring& GetKey() { return m_strKey; }
 	const wstring& GetRelativePath() { return m_strRelativePath; }
-
+	HDC m_dc;
 public:
-	CRes();
+	CRes(HDC _dc);
 	virtual ~CRes();
 };
-
